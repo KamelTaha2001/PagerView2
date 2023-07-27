@@ -14,12 +14,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.vpViewPager.adapter = PagerAdapter(this)
 
-        val tabs : List<Fragment> = listOf(Tab1(), Tab2())
-        binding.vpViewPager.adapter = PagerAdapter(tabs)
         try {
             TabLayoutMediator(binding.tlTabLayout, binding.vpViewPager) { tab, position ->
                 when (position) {
